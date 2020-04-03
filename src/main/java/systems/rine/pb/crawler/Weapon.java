@@ -11,6 +11,6 @@ public class Weapon {
   
     public List<String> flags = null;
   
-    public List<SkillId> skills = null;
+    public List<SkillHolder> skills = null;
 
 }

@@ -6,15 +6,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Skill {
-
-    @SerializedName("name")
-    @Expose
     public String name;
-    @SerializedName("facts")
-    @Expose
     public List<Fact> facts = null;
-    @SerializedName("description")
-    @Expose
     public String description;
     @SerializedName("icon")
     @Expose
@@ -46,8 +39,6 @@ public class Skill {
     @SerializedName("id")
     @Expose
     public Integer id;
-    @SerializedName("chat_link")
-    @Expose
     public String chatLink;
     @SerializedName("categories")
     @Expose

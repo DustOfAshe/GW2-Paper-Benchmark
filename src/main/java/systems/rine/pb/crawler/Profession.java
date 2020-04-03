@@ -7,32 +7,21 @@ import com.google.gson.annotations.SerializedName;
 
 public class Profession {
 
-    @SerializedName("id")
-    @Expose
+    @SerializedName("id")    
     public String id;
-    @SerializedName("name")
-    @Expose
+    @SerializedName("name")    
     public String name;
-    @SerializedName("icon")
-    @Expose
+    @SerializedName("icon")    
     public String icon;
-    @SerializedName("icon_big")
-    @Expose
+    @SerializedName("icon_big")    
     public String iconBig;
-    @SerializedName("specializations")
-    @Expose
+    @SerializedName("specializations")    
     public List<Integer> specializations = null;
-    @SerializedName("weapons")
-    @Expose
-    public Weapons weapons;
-    @SerializedName("flags")
-    @Expose
+    @SerializedName("weapons")    
+    public WeaponList weapons;
+    @SerializedName("flags")    
     public List<String> flags = null;
-    @SerializedName("skills")
-    @Expose
-    public List<SkillId> skills = null;
-    @SerializedName("training")
-    @Expose
-    public List<Training> training = null;
+    @SerializedName("skills")    
+    public List<SkillHolder> skills = null;
 
 }
