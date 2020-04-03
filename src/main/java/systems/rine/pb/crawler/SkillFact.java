@@ -4,7 +4,7 @@ package systems.rine.pb.crawler;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Fact {
+public class SkillFact {
 
     @SerializedName("text")
     @Expose
@@ -15,9 +15,17 @@ public class Fact {
     @SerializedName("icon")
     @Expose
     public String icon;
-    @SerializedName("value")
+    @SerializedName("requires_trait")
     @Expose
-    public String value;
-    
+    public Integer requiresTrait;
+    @SerializedName("hit_count")
+    @Expose
+    public Integer hitCount;
+    @SerializedName("dmg_multiplier")
+    @Expose
+    public Double dmgMultiplier;
+    @SerializedName("overrides")
+    @Expose
+    public Integer overrides;
 
 }

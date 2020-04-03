@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Skill {
     public String name;
-    public List<Fact> facts = null;
+    public List<SkillFact> facts = null;
     public String description;
     @SerializedName("icon")
     public String icon;
@@ -33,6 +33,6 @@ public class Skill {
     @SerializedName("categories")
     public List<Object> categories = null;
     @SerializedName("traited_facts")
-    public List<TraitedFact> traitedFacts = null;
+    public List<SkillFact> traitedFacts = null;
 
 }
