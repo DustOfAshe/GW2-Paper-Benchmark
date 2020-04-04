@@ -27,7 +27,7 @@ public class SkillHolder {
 			public SkillHolder deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 					throws JsonParseException {
 				JsonObject jsonObject = json.getAsJsonObject();
-				String skillJson = GsonHelper.getJson("/skills/" + jsonObject.get("id").getAsInt());
+				String skillJson = HTTPRequestCache.get("/skills/" + jsonObject.get("id").getAsInt());
 				Skill skill = context.deserialize(new JsonParser().parse(skillJson).getAsJsonObject(), Skill.class);
 				return new SkillHolder(skill);
 			}

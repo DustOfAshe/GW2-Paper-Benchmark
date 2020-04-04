@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -18,6 +19,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
 import systems.rine.pb.crawler.GsonHelper;
+import systems.rine.pb.crawler.HTTPRequestCache;
 import systems.rine.pb.crawler.Profession;
 import systems.rine.pb.crawler.Skill;
 import systems.rine.pb.crawler.SkillHolder;
@@ -33,16 +35,25 @@ public class Testing {
 		gsonBuilder.registerTypeAdapter(WeaponList.class, WeaponList.getDeserializer());
 		gson = gsonBuilder.create();
 		
+		long time = System.currentTimeMillis();
 		
-		Profession guard = gson.fromJson(GsonHelper.getJson("/professions/Guardian"), Profession.class);
-
 		
-		for(Weapon weapon: guard.weapons.get()) {
-			for(SkillHolder skh : weapon.skills) {
-				System.out.println(skh.getSkill().name);
-			}
-		}
+		Profession[] professions = gson.fromJson(HTTPRequestCache.get("/professions?ids=all"), Profession[].class);	
+//		for(Profession profession : professions) {
+//			for(SkillHolder skh : profession.skills) {
+//				System.out.println(skh.getSkill().name);
+//			}
+//			for(Weapon weapon: profession.weapons.get()) {
+//				for(SkillHolder skh : weapon.skills) {
+//					System.out.println(skh.getSkill().name);
+//				}
+//			}
+//			HTTPRequestCache.save();
+//		}
 		
+		System.out.println("load time for all professions: " + (System.currentTimeMillis() - time));
+		
+		HTTPRequestCache.save();
 	}
 
 	
