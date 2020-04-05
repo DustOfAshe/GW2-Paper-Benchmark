@@ -1,7 +1,8 @@
 package systems.rine.pb.main;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,10 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
 import systems.rine.pb.crawler.HTTPRequestCache;
@@ -105,7 +103,21 @@ public class DataCrawler {
 		crawler.fastPrefetch(false);
 
 		System.out.println("load time for all professions: " + (System.currentTimeMillis() - time));
-
+		
+		Integer[] itemIds = crawler.gson.fromJson(HTTPRequestCache.get("/items"), Integer[].class);
+		List<Item> items = new ArrayList<>();
+		for(int itemId : itemIds) {
+			System.out.println("current id:" + itemId);
+			Item item = crawler.gson.fromJson(HTTPRequestCache.get("/items/" + itemId), Item.class);
+			items.add(item);
+		}
+		
+		time = System.currentTimeMillis();
+		System.out.println("starting printing");
+		for(Item item: items) {
+			
+		}
+		System.out.println("priunt time: " + (System.currentTimeMillis() - time));
 		HTTPRequestCache.save();
 	}
 

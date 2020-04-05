@@ -1,5 +1,6 @@
 package systems.rine.pb.crawler;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -36,9 +37,13 @@ public class HTTPRequestCache {
 			long time = System.currentTimeMillis();
 			logger.info("Downloading " + url + " ...");
 			value = requestFromServer(url);
-			logger.info("Download done in: " + (System.currentTimeMillis() - time) + "ms");
-			//paged and bulk requests shouldn't get saved
-			if(cache) {
+			if(value == null) {
+				logger.warn("Download failed");
+			}else {
+				logger.info("Download done in: " + (System.currentTimeMillis() - time) + "ms");
+			}
+			
+			if(cache && value != null) {
 				map.put(url, value);	
 			}			
 		}
@@ -60,6 +65,8 @@ public class HTTPRequestCache {
 			connection = url.openConnection();
 			connection.connect();
 			return new String(IOUtils.toByteArray(connection.getInputStream()));
+		} catch (FileNotFoundException e) {
+			return null;
 		} catch (IOException e) {
 			e.printStackTrace();
 			int i = 0;
@@ -68,7 +75,7 @@ public class HTTPRequestCache {
 				System.out.print(connection.getHeaderFieldKey(i) + ": ");
 				System.out.println(connection.getHeaderField(i++));
 			}while(field != null);
-			return "";
+			return null;
 		}
 	}
 	

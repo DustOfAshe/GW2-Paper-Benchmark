@@ -43,7 +43,7 @@ public class Skill {
 	@SerializedName("traited_facts")
 	public List<SkillFact> traitedFacts = null;
 
-	public static Object getArrayDeserializer() {
+	public static JsonDeserializer<Skill[]> getArrayDeserializer() {
 		return new JsonDeserializer<Skill[]>() {
 
 			@Override
