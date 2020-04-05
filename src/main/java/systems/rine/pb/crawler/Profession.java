@@ -22,6 +22,6 @@ public class Profession {
     @SerializedName("flags")    
     public List<String> flags = null;
     @SerializedName("skills")    
-    public List<SkillHolder> skills = null;
+    public Skill[] skills = null;
 
 }
