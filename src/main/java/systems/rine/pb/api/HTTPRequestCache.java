@@ -1,4 +1,4 @@
-package systems.rine.pb.crawler;
+package systems.rine.pb.api;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,6 +23,7 @@ public class HTTPRequestCache {
 
 	static {
 		db = DBMaker.fileDB("requestcache.db").transactionEnable().make();
+		db.hashMap("map2", Serializer.
 		map = db.hashMap("map", Serializer.STRING, Serializer.STRING).createOrOpen();
 		limiter = RateLimiter.create(5);
 	}

@@ -1,5 +1,5 @@
 
-package systems.rine.pb.crawler;
+package systems.rine.pb.api;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -1,5 +1,5 @@
 
-package systems.rine.pb.crawler;
+package systems.rine.pb.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

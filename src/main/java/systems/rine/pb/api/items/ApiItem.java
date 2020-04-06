@@ -1,20 +1,10 @@
-package systems.rine.pb.crawler;
+package systems.rine.pb.api.items;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
 import com.google.gson.annotations.SerializedName;
 
-import systems.rine.pb.crawler.items.ItemObject;
-
-public class Item {
+public class ApiItem {
 
 	@SerializedName("name")
 	public String name;
@@ -43,11 +33,11 @@ public class Item {
 	@SerializedName("icon")
 	public String icon;
 	@SerializedName("upgrades_from")
-	public List<UpgradeItem> upgradesFrom;
+	public List<ApiUpgradeItem> upgradesFrom;
 	@SerializedName("upgrades_into")
-	public List<UpgradeItem> upgradesInto;
+	public List<ApiUpgradeItem> upgradesInto;
 	@SerializedName("details")
-	public ItemObject itemObject;
+	public ApiItemDetails itemObject;
 
 
 }

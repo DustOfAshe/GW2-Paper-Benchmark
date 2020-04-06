@@ -1,4 +1,4 @@
-package systems.rine.pb.crawler;
+package systems.rine.pb.api;
 
 public class GsonHelper {
 

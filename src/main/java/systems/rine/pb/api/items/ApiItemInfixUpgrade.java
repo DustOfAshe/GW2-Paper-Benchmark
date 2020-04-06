@@ -1,10 +1,10 @@
-package systems.rine.pb.crawler.items;
+package systems.rine.pb.api.items;
 
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
-public class InfixUpgrade {
+public class ApiItemInfixUpgrade {
 	@SerializedName("id")
 	public Integer id;
 	@SerializedName("attributes")

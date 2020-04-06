@@ -7,16 +7,21 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 
-import systems.rine.pb.crawler.HTTPRequestCache;
-import systems.rine.pb.crawler.Item;
-import systems.rine.pb.crawler.Skill;
-import systems.rine.pb.crawler.WeaponList;
+import systems.rine.pb.api.HTTPRequestCache;
+import systems.rine.pb.api.Skill;
+import systems.rine.pb.api.WeaponList;
+import systems.rine.pb.api.items.ApiItem;
+import systems.rine.pb.api.items.ApiItemDetails;
+import systems.rine.pb.api.items.ApiItemStat;
 
 public class DataCrawler {
 	private static final Logger logger = LogManager.getLogger(DataCrawler.class);
@@ -96,7 +101,7 @@ public class DataCrawler {
 
 	}
 
-	public static void main(String[] args) throws IOException, InterruptedException {
+	public static void main(String[] args){
 		long time = System.currentTimeMillis();
 
 		DataCrawler crawler = new DataCrawler();
@@ -105,16 +110,16 @@ public class DataCrawler {
 		System.out.println("load time for all professions: " + (System.currentTimeMillis() - time));
 		
 		Integer[] itemIds = crawler.gson.fromJson(HTTPRequestCache.get("/items"), Integer[].class);
-		List<Item> items = new ArrayList<>();
+		List<ApiItem> items = new ArrayList<>();
 		for(int itemId : itemIds) {
 			System.out.println("current id:" + itemId);
-			Item item = crawler.gson.fromJson(HTTPRequestCache.get("/items/" + itemId), Item.class);
+			ApiItem item = crawler.gson.fromJson(HTTPRequestCache.get("/items/" + itemId), ApiItem.class);
 			items.add(item);
 		}
 		
 		time = System.currentTimeMillis();
 		System.out.println("starting printing");
-		for(Item item: items) {
+		for(ApiItem item: items) {
 			
 		}
 		System.out.println("priunt time: " + (System.currentTimeMillis() - time));
