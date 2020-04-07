@@ -1,11 +1,13 @@
 package systems.rine.pb.api.items;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ApiItemDetails {
-	
+public class ApiItemDetails implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	@SerializedName("type")
 	public String type;
 	@SerializedName("weight_class")
@@ -19,7 +21,7 @@ public class ApiItemDetails {
 	@SerializedName("suffix_item_id")
 	public Integer suffixItemId;
 	@SerializedName("secondary_suffix_item_id")
-	public Integer secondarySuffixItemId;
+	public String secondarySuffixItemId;
 	@SerializedName("stat_choices")
 	public List<Integer> statChoices;
 	@SerializedName("size")

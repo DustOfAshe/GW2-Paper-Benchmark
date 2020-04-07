@@ -1,36 +1,43 @@
 package systems.rine.pb.main;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.nustaq.serialization.FSTConfiguration;
+import org.nustaq.serialization.util.FSTOutputStream;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
+import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
 
+import systems.rine.pb.api.ApiData;
 import systems.rine.pb.api.HTTPRequestCache;
-import systems.rine.pb.api.Skill;
 import systems.rine.pb.api.WeaponList;
 import systems.rine.pb.api.items.ApiItem;
-import systems.rine.pb.api.items.ApiItemDetails;
 import systems.rine.pb.api.items.ApiItemStat;
+import systems.rine.pb.api.skills.ApiSkill;
+import systems.rine.pb.api.skills.ApiSkillFact;
+import systems.rine.pb.api.traits.ApiTrait;
 
 public class DataCrawler {
 	private static final Logger logger = LogManager.getLogger(DataCrawler.class);
 	private Gson gson;
+	private ApiData data;
 
 	public DataCrawler() {
+		data = new ApiData();
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(WeaponList.class, WeaponList.getDeserializer());
-		gsonBuilder.registerTypeAdapter(Skill[].class, Skill.getArrayDeserializer());
 		gson = gsonBuilder.create();
 	}
 
@@ -38,90 +45,75 @@ public class DataCrawler {
 	 * This method will request big object arrays from the API then manually stores
 	 * it in the DB
 	 */
-	public void fastPrefetch(boolean update) {
-		logger.info("Starting Bulk Prefetch...");
+	public void buildData(boolean update) {
+		if(update) {
+			HTTPRequestCache.clear();
+		}
+		logger.info("Starting Bulk Fetching...");
 		long time = System.currentTimeMillis();
-		JsonParser parser = new JsonParser();
 
 		// ITEMS
-		if (!HTTPRequestCache.hasKey("HasItems") || update) {
-			Integer[] itemIds = gson.fromJson(HTTPRequestCache.get("/items"), Integer[].class);
-			for (int i = 0; i <= itemIds.length / 200; i++) {
-				JsonArray items = parser.parse(HTTPRequestCache.get("/items?page=" + i + "&page_size=200", false))
-						.getAsJsonArray();
-				for (JsonElement item : items) {
-					HTTPRequestCache.putManually("/items/" + item.getAsJsonObject().get("id"), item.toString());
-				}
+		Integer[] itemIds = gson.fromJson(HTTPRequestCache.get("/items"), Integer[].class);
+		IntStream.range(0, itemIds.length / 200 + 1).parallel().forEach(i ->{
+			ApiItem[] items = gson.fromJson(HTTPRequestCache.get("/items?page=" + i + "&page_size=200"),
+					ApiItem[].class);
+			for (ApiItem item : items) {
+				data.putItem(item);
 			}
-			HTTPRequestCache.putManually("HasItems", "yep");
-			HTTPRequestCache.save();
-		} else {
-			logger.info("Items cached already, skipped...");
+		});
+		for (int i = 0; i <= itemIds.length / 200; i++) {
+//			ApiItem[] items = gson.fromJson(HTTPRequestCache.get("/items?page=" + i + "&page_size=200"),
+//					ApiItem[].class);
+//			for (ApiItem item : items) {
+//				data.putItem(item);
+//			}
 		}
 
 		// ITEMSTATS
-		if (!HTTPRequestCache.hasKey("HasItemStats") || update) {
-			JsonArray itemstats = parser.parse(HTTPRequestCache.get("/itemstats?ids=all", false)).getAsJsonArray();
-			for (JsonElement itemstat : itemstats) {
-				HTTPRequestCache.putManually("/itemstats/" + itemstat.getAsJsonObject().get("id"), itemstat.toString());
-			}
-			HTTPRequestCache.putManually("HasItemStats", "yep");
-			HTTPRequestCache.save();
-		} else {
-			logger.info("ItemStats cached already, skipped...");
+		ApiItemStat[] itemStats = gson.fromJson(HTTPRequestCache.get("/itemstats?ids=all"), ApiItemStat[].class);
+		for (ApiItemStat apiItemStat : itemStats) {
+			data.putItemStat(apiItemStat);
 		}
 
 		// SKILLS
-		if (!HTTPRequestCache.hasKey("HasSkills") || update) {
-			JsonArray skills = parser.parse(HTTPRequestCache.get("/skills?ids=all", false)).getAsJsonArray();
-			for (JsonElement skill : skills) {
-				HTTPRequestCache.putManually("/skills/" + skill.getAsJsonObject().get("id"), skill.toString());
-			}
-			HTTPRequestCache.putManually("HasSkills", "yep");
-			HTTPRequestCache.save();
-		} else {
-			logger.info("Skills cached already, skipped...");
+		ApiSkill[] skills = gson.fromJson(HTTPRequestCache.get("/skills?ids=all"), ApiSkill[].class);
+		for (ApiSkill apiSkill : skills) {
+			data.putSkill(apiSkill);
 		}
 
 		// TRAITS
-		if (!HTTPRequestCache.hasKey("HasTraits") || update) {
-		JsonArray traits = parser.parse(HTTPRequestCache.get("/traits?ids=all", false)).getAsJsonArray();
-		for (JsonElement trait : traits) {
-			HTTPRequestCache.putManually("/traits/" + trait.getAsJsonObject().get("id"), trait.toString());
+		ApiTrait[] traits = gson.fromJson(HTTPRequestCache.get("/traits?ids=all"), ApiTrait[].class);
+		for (ApiTrait trait : traits) {
+			data.putTrait(trait);
 		}
-		HTTPRequestCache.putManually("HasTraits", "yep");
-		HTTPRequestCache.save();
-		}else {
-			logger.info("Traits cached already, skipped...");
-		}
-		logger.info("Bulk Prefetch done in " + (System.currentTimeMillis() - time));
+		
+		logger.info("Fetching done in " + (System.currentTimeMillis() - time));
 	}
 
-	public void loadGW2Data() {
-
-	}
-
-	public static void main(String[] args){
+	public static void main(String[] args) throws IOException {
 		long time = System.currentTimeMillis();
 
 		DataCrawler crawler = new DataCrawler();
-		crawler.fastPrefetch(false);
+		crawler.buildData(false);
+		FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
+		Files.write(conf.asByteArray(crawler.data), new File("apidata.obj"));
 
-		System.out.println("load time for all professions: " + (System.currentTimeMillis() - time));
+//		FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
+//		ApiData data = (ApiData) conf.asObject(Files.toByteArray(new File("apidata.obj")));
 		
-		Integer[] itemIds = crawler.gson.fromJson(HTTPRequestCache.get("/items"), Integer[].class);
-		List<ApiItem> items = new ArrayList<>();
-		for(int itemId : itemIds) {
-			System.out.println("current id:" + itemId);
-			ApiItem item = crawler.gson.fromJson(HTTPRequestCache.get("/items/" + itemId), ApiItem.class);
-			items.add(item);
-		}
-		
-		time = System.currentTimeMillis();
-		System.out.println("starting printing");
-		for(ApiItem item: items) {
-			
-		}
+		System.out.println("load time for objects: " + (System.currentTimeMillis() - time));
+
+//		for (ApiSkill skill : data.getSkills()) {
+//			if(skill.facts != null) {
+//				for (ApiSkillFact fact : skill.facts) {
+//					if(fact.value != null) {
+//						System.out.println(skill.name);
+//						System.out.println(fact.value);
+//					}
+//				}
+//			}		
+//		}
+
 		System.out.println("priunt time: " + (System.currentTimeMillis() - time));
 		HTTPRequestCache.save();
 	}

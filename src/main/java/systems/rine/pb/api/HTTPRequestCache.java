@@ -23,7 +23,6 @@ public class HTTPRequestCache {
 
 	static {
 		db = DBMaker.fileDB("requestcache.db").transactionEnable().make();
-		db.hashMap("map2", Serializer.
 		map = db.hashMap("map", Serializer.STRING, Serializer.STRING).createOrOpen();
 		limiter = RateLimiter.create(5);
 	}
@@ -84,12 +83,17 @@ public class HTTPRequestCache {
 		return map.get(key) != null;
 	}
 	
-	public static void putManually(String url, String json) {
-		map.put(url, json);
+	public static void putKey(String key) {
+		map.put(key, "genericstring123");
 	}
 
+	public static void clear() {
+		map.clear();
+	}
+	
 	public static void save() {
 		db.commit();
 	}
+
 
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import systems.rine.pb.api.skills.ApiSkill;
+
 public class Profession {
 
     @SerializedName("id")    
@@ -22,6 +24,6 @@ public class Profession {
     @SerializedName("flags")    
     public List<String> flags = null;
     @SerializedName("skills")    
-    public Skill[] skills = null;
+    public ApiSkill[] skills = null;
 
 }
