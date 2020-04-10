@@ -2920,3 +2920,143 @@
 02:15:03 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37108 for Item: Attuned Marriner's Compass (Infused) This might be a bug in the API
 02:15:03 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Attuned Snaff's Gyre This might be a bug in the API
 02:15:03 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 79982 for Item: Attuned Mist Band (Infused) This might be a bug in the API
+06:52:41 [main] INFO  systems.rine.pb.main.DataCrawler - Starting Bulk Fetching...
+06:52:41 [main] INFO  systems.rine.pb.main.DataCrawler - Fetching done in 727
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86599 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86419 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86624 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86478 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 70979 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 75079 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 76921 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74364 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74097 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74029 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 73083 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 70595 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 71795 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 72171 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74646 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 72016 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 92784 for Item: Sclerite Karka Shell This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37081 for Item: Marriner's Compass (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Snaff's Gyre (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37094 for Item: Attuned Khilbron's Phylactery (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37110 for Item: Attuned Mellaggan's Whorl (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39599 for Item: Attuned Healing Signet (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37106 for Item: Attuned Vine of the Pale Tree (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39606 for Item: Attuned Barbed Signet (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37109 for Item: Attuned Seal of the Khan-Ur (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39611 for Item: Attuned Purge Signet (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37111 for Item: Attuned Bagh Nakh (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37102 for Item: Attuned Lunaria, Circle of the Moon (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37095 for Item: Attuned Circle of Light (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37081 for Item: Attuned Marriner's Compass This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37108 for Item: Attuned Marriner's Compass (Infused) This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Attuned Snaff's Gyre This might be a bug in the API
+06:52:43 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 79982 for Item: Attuned Mist Band (Infused) This might be a bug in the API
+08:35:16 [main] INFO  systems.rine.pb.main.DataCrawler - Starting Bulk Fetching...
+08:35:17 [main] INFO  systems.rine.pb.main.DataCrawler - Fetching done in 753
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86599 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86419 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86624 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86478 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 70979 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 75079 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 76921 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74364 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74097 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74029 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 73083 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 70595 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 71795 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 72171 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74646 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 72016 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 92784 for Item: Sclerite Karka Shell This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37081 for Item: Marriner's Compass (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Snaff's Gyre (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37094 for Item: Attuned Khilbron's Phylactery (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37110 for Item: Attuned Mellaggan's Whorl (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39599 for Item: Attuned Healing Signet (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37106 for Item: Attuned Vine of the Pale Tree (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39606 for Item: Attuned Barbed Signet (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37109 for Item: Attuned Seal of the Khan-Ur (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39611 for Item: Attuned Purge Signet (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37111 for Item: Attuned Bagh Nakh (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37102 for Item: Attuned Lunaria, Circle of the Moon (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37095 for Item: Attuned Circle of Light (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37081 for Item: Attuned Marriner's Compass This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37108 for Item: Attuned Marriner's Compass (Infused) This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Attuned Snaff's Gyre This might be a bug in the API
+08:35:19 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 79982 for Item: Attuned Mist Band (Infused) This might be a bug in the API
+08:35:45 [main] INFO  systems.rine.pb.main.DataCrawler - Starting Bulk Fetching...
+08:35:46 [main] INFO  systems.rine.pb.main.DataCrawler - Fetching done in 745
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86599 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86419 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86624 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86478 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 70979 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 75079 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 76921 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74364 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74097 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74029 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 73083 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 70595 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 71795 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 72171 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74646 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 72016 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 92784 for Item: Sclerite Karka Shell This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37081 for Item: Marriner's Compass (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Snaff's Gyre (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37094 for Item: Attuned Khilbron's Phylactery (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37110 for Item: Attuned Mellaggan's Whorl (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39599 for Item: Attuned Healing Signet (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37106 for Item: Attuned Vine of the Pale Tree (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39606 for Item: Attuned Barbed Signet (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37109 for Item: Attuned Seal of the Khan-Ur (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39611 for Item: Attuned Purge Signet (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37111 for Item: Attuned Bagh Nakh (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37102 for Item: Attuned Lunaria, Circle of the Moon (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37095 for Item: Attuned Circle of Light (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37081 for Item: Attuned Marriner's Compass This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37108 for Item: Attuned Marriner's Compass (Infused) This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Attuned Snaff's Gyre This might be a bug in the API
+08:35:48 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 79982 for Item: Attuned Mist Band (Infused) This might be a bug in the API
+08:41:59 [main] INFO  systems.rine.pb.main.DataCrawler - Starting Bulk Fetching...
+08:42:00 [main] INFO  systems.rine.pb.main.DataCrawler - Fetching done in 785
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86599 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86419 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86624 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 86478 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 70979 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 75079 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 76921 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74364 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74097 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74029 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 73083 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 70595 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 71795 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 72171 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 74646 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 72016 for Item: Shard of Crystallized Mists Essence This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 92784 for Item: Sclerite Karka Shell This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37081 for Item: Marriner's Compass (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Snaff's Gyre (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37094 for Item: Attuned Khilbron's Phylactery (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37110 for Item: Attuned Mellaggan's Whorl (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39599 for Item: Attuned Healing Signet (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37106 for Item: Attuned Vine of the Pale Tree (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39606 for Item: Attuned Barbed Signet (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37109 for Item: Attuned Seal of the Khan-Ur (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 39611 for Item: Attuned Purge Signet (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37111 for Item: Attuned Bagh Nakh (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37102 for Item: Attuned Lunaria, Circle of the Moon (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37095 for Item: Attuned Circle of Light (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37081 for Item: Attuned Marriner's Compass This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37108 for Item: Attuned Marriner's Compass (Infused) This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Attuned Snaff's Gyre This might be a bug in the API
+08:42:02 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 79982 for Item: Attuned Mist Band (Infused) This might be a bug in the API

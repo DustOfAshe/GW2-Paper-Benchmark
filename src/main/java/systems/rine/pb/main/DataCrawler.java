@@ -2,6 +2,8 @@ package systems.rine.pb.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.IntStream;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +16,7 @@ import systems.rine.pb.api.ApiData;
 import systems.rine.pb.api.HTTPRequestCache;
 import systems.rine.pb.api.items.ApiItem;
 import systems.rine.pb.api.items.ApiItemStat;
+import systems.rine.pb.api.items.ApiItemstatAttribute;
 import systems.rine.pb.api.professions.ApiProfession;
 import systems.rine.pb.api.professions.ApiSpecialization;
 import systems.rine.pb.api.professions.ApiWeaponList;
@@ -101,19 +104,25 @@ public class DataCrawler {
 		Files.write(conf.asByteArray(crawler.data), new File("apidata.obj"));
 
 		ApiData apiData = (ApiData) conf.asObject(Files.toByteArray(new File("apidata.obj")));
-		
+		Set<String> stats = new TreeSet<>();
+		for(ApiItemStat stat : apiData.getItemStats()) {
+			for(ApiItemstatAttribute attribute: stat.attributes) {
+				stats.add(attribute.attribute);
+			}
+		}
+		System.out.println(String.join(",", stats));
 		
 		
 		GW2Data gw2Data = new GW2Data(apiData);
 		for(Item item : gw2Data.getItems()) {
 			if(item instanceof ArmorItem) {
-				for(InfusionSlot slot: ((ArmorItem) item).getInfusionSlots()) {
-					if(slot.getInfusion() != null) {
-						System.out.println(slot.getInfusion().getName());
-					}
+				if(((ArmorItem) item).getStats() != null) {
+					System.out.println(item.getName());
+					System.out.println(((ArmorItem) item).getStats());
 				}
 			}
 		}
+		
 		
 
 		System.out.println("total time: " + (System.currentTimeMillis() - time));

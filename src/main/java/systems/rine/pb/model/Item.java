@@ -13,8 +13,9 @@ public class Item {
 	private static final Logger logger = LogManager.getLogger(Item.class);
 	protected ApiItem apiItem;
 	protected GW2Data gw2Data;
-	private List<Item> upgradesFrom = new ArrayList<>();
-	private List<Item> upgradesInto = new ArrayList<>();
+	protected Rarity rarity;
+	protected List<Item> upgradesFrom = new ArrayList<>();
+	protected List<Item> upgradesInto = new ArrayList<>();
 
 	public Item(ApiItem apiItem, GW2Data gw2Data) {
 		this.apiItem = apiItem;
@@ -45,10 +46,15 @@ public class Item {
 				}
 			}
 		}
+		rarity = Rarity.valueOf(apiItem.rarity);
 	}
 
 	public String getName() {
 		return apiItem.name;
+	}
+	
+	public int getLevel() {
+		return apiItem.level;
 	}
 
 	public List<Item> getUpgradesFrom() {

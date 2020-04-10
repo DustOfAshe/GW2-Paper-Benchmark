@@ -7,6 +7,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import systems.rine.pb.api.ApiData;
 import systems.rine.pb.api.items.ApiItem;
+import systems.rine.pb.api.items.ApiItemInfixUpgrade;
+import systems.rine.pb.api.items.ApiItemStat;
 
 public class GW2Data {
 	private ApiData apiData;
@@ -43,6 +45,10 @@ public class GW2Data {
 
 	public List<Item> getItems() {
 		return new ArrayList<Item>(items.values());
+	}
+
+	public ApiItemStat getItemStat(int id) {
+		return apiData.getItemStat(id);
 	}
 
 }
