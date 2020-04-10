@@ -27,7 +27,7 @@ public class ApiItem implements Serializable{
 	@SerializedName("flags")
 	public List<String> flags = null;
 	@SerializedName("restrictions")
-	public List<Object> restrictions = null;
+	public List<String> restrictions = null;
 	@SerializedName("id")
 	public Integer id;
 	@SerializedName("chat_link")
