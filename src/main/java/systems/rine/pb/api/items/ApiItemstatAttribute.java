@@ -13,5 +13,10 @@ public class ApiItemstatAttribute implements Serializable{
 	public Double multiplier;
 	@SerializedName("value")
 	public Integer value;
+	
+	@Override
+	public String toString() {
+		return "ApiItemstatAttribute [attribute=" + attribute + ", multiplier=" + multiplier + ", value=" + value + "]";
+	}	
 
 }

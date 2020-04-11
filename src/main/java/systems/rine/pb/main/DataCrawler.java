@@ -24,9 +24,14 @@ import systems.rine.pb.api.skills.ApiSkill;
 import systems.rine.pb.api.skills.ApiSkillFact;
 import systems.rine.pb.api.traits.ApiTrait;
 import systems.rine.pb.model.ArmorItem;
+import systems.rine.pb.model.ArmorType;
 import systems.rine.pb.model.GW2Data;
 import systems.rine.pb.model.InfusionSlot;
 import systems.rine.pb.model.Item;
+import systems.rine.pb.model.Profession;
+import systems.rine.pb.model.ProfessionType;
+import systems.rine.pb.model.Stats;
+import systems.rine.pb.model.WeightClass;
 
 public class DataCrawler {
 	private static final Logger logger = LogManager.getLogger(DataCrawler.class);
@@ -98,32 +103,17 @@ public class DataCrawler {
 	public static void main(String[] args) throws IOException {
 		long time = System.currentTimeMillis();
 
-		DataCrawler crawler = new DataCrawler();
-		crawler.buildData(false);
-		FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
-		Files.write(conf.asByteArray(crawler.data), new File("apidata.obj"));
+//		DataCrawler crawler = new DataCrawler();
+//		crawler.buildData(false);
+//		FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
+//		Files.write(conf.asByteArray(crawler.data), new File("apidata.obj"));
 
+		FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
 		ApiData apiData = (ApiData) conf.asObject(Files.toByteArray(new File("apidata.obj")));
-		Set<String> stats = new TreeSet<>();
-		for(ApiItemStat stat : apiData.getItemStats()) {
-			for(ApiItemstatAttribute attribute: stat.attributes) {
-				stats.add(attribute.attribute);
-			}
-		}
-		System.out.println(String.join(",", stats));
-		
-		
 		GW2Data gw2Data = new GW2Data(apiData);
-		for(Item item : gw2Data.getItems()) {
-			if(item instanceof ArmorItem) {
-				if(((ArmorItem) item).getStats() != null) {
-					System.out.println(item.getName());
-					System.out.println(((ArmorItem) item).getStats());
-				}
-			}
-		}
 		
-		
+		Profession profession = gw2Data.getProfession(ProfessionType.Mesmer);
+		System.out.println(profession.getBaseHp());
 
 		System.out.println("total time: " + (System.currentTimeMillis() - time));
 		HTTPRequestCache.save();

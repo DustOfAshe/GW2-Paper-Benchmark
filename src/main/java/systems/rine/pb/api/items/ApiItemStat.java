@@ -14,5 +14,10 @@ public class ApiItemStat implements Serializable{
 	public String name;
 	@SerializedName("attributes")
 	public List<ApiItemstatAttribute> attributes = null;
+	
+	@Override
+	public String toString() {
+		return "ApiItemStat [id=" + id + ", name=" + name + ", attributes=" + attributes + "]";
+	}
 
 }

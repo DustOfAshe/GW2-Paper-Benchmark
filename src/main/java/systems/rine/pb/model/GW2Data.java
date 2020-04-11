@@ -9,10 +9,11 @@ import systems.rine.pb.api.ApiData;
 import systems.rine.pb.api.items.ApiItem;
 import systems.rine.pb.api.items.ApiItemInfixUpgrade;
 import systems.rine.pb.api.items.ApiItemStat;
+import systems.rine.pb.api.professions.ApiProfession;
 
 public class GW2Data {
 	private ApiData apiData;
-	private Map<String, Profession> professions = new ConcurrentHashMap<>();
+	private Map<ProfessionType, Profession> professions = new ConcurrentHashMap<>();
 	private Map<Integer, Item> items = new ConcurrentHashMap<>();
 	
 	public GW2Data(ApiData apiData) {
@@ -31,11 +32,18 @@ public class GW2Data {
 			}
 			items.put(apiItem.id, item);
 		}
+		for(ApiProfession apiProfession : apiData.getProfessions()) {
+			Profession profession = new Profession(apiProfession, this);
+			professions.put(profession.getType(), profession);
+		}
 	}
 	
 	private void buildObjects() {
 		for(Item item : items.values()) {
 			item.create();
+		}
+		for(Profession profession : professions.values()) {
+			profession.create();
 		}
 	}
 
@@ -49,6 +57,10 @@ public class GW2Data {
 
 	public ApiItemStat getItemStat(int id) {
 		return apiData.getItemStat(id);
+	}
+	
+	public Profession getProfession(ProfessionType type) {
+		return professions.get(type);
 	}
 
 }
