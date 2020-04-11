@@ -1,5 +1,5 @@
 package systems.rine.pb.model;
 
-public class Skill {
+public class Condition {
 
 }

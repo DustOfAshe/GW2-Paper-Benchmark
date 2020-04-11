@@ -2,8 +2,6 @@ package systems.rine.pb.main;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.stream.IntStream;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,22 +14,15 @@ import systems.rine.pb.api.ApiData;
 import systems.rine.pb.api.HTTPRequestCache;
 import systems.rine.pb.api.items.ApiItem;
 import systems.rine.pb.api.items.ApiItemStat;
-import systems.rine.pb.api.items.ApiItemstatAttribute;
 import systems.rine.pb.api.professions.ApiProfession;
 import systems.rine.pb.api.professions.ApiSpecialization;
 import systems.rine.pb.api.professions.ApiWeaponList;
 import systems.rine.pb.api.skills.ApiSkill;
 import systems.rine.pb.api.skills.ApiSkillFact;
 import systems.rine.pb.api.traits.ApiTrait;
-import systems.rine.pb.model.ArmorItem;
-import systems.rine.pb.model.ArmorType;
 import systems.rine.pb.model.GW2Data;
-import systems.rine.pb.model.InfusionSlot;
-import systems.rine.pb.model.Item;
 import systems.rine.pb.model.Profession;
 import systems.rine.pb.model.ProfessionType;
-import systems.rine.pb.model.Stats;
-import systems.rine.pb.model.WeightClass;
 
 public class DataCrawler {
 	private static final Logger logger = LogManager.getLogger(DataCrawler.class);
@@ -111,6 +102,20 @@ public class DataCrawler {
 		FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
 		ApiData apiData = (ApiData) conf.asObject(Files.toByteArray(new File("apidata.obj")));
 		GW2Data gw2Data = new GW2Data(apiData);
+		
+		for(ApiSkill skill : apiData.getSkills()) {
+			if(skill.facts != null) {
+				for(ApiSkillFact fact : skill.facts) {
+					System.out.println(fact.text);
+//					if(fact.type == null) {
+//						System.out.println("weewo");
+//					}
+//					if(fact.type.equals("Buff")) {
+//						System.out.println(fact.text);
+//					}
+				}
+			}			
+		}
 		
 		Profession profession = gw2Data.getProfession(ProfessionType.Mesmer);
 		System.out.println(profession.getBaseHp());
