@@ -1,9 +1,19 @@
 package systems.rine.pb.simulation;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
+
+import com.google.common.collect.Table;
+
+import systems.rine.pb.model.Target;
 
 public class TimeManager {
 	private PriorityQueue<Event> eventQueue;
+	private Map<Target, List<Event>> quicknessEvents = new HashMap<>();
+	private Map<Target, List<Event>> alacrityEvents = new HashMap<>();
 	private long currentTime;
 	private boolean stop;
 	
@@ -15,10 +25,10 @@ public class TimeManager {
 		stop = false;
 		while(!eventQueue.isEmpty() && !stop) {
 			Event current = eventQueue.poll();
-			currentTime = current.offset;
-			long result = current.action.run(currentTime);
+			currentTime = current.getOffset();
+			long result = current.getAction().run(currentTime);
 			if(result > 0) {
-				current.offset += result;
+				current.addOffset(result);
 				eventQueue.offer(current);
 			}
 		}
@@ -28,36 +38,45 @@ public class TimeManager {
 		stop = true;
 	}
 	
-	public Event registerEvent(int offset, Action action) {
-		Event event = new Event(offset, action);
+	public void updateQuicknessEvents(boolean hasQuickness, Target target) {
+		for(Event event : quicknessEvents.get(target)) {
+			long diff = event.getOffset() - currentTime;
+			if(hasQuickness) {
+				diff /= 1.5;
+			}else {
+				diff *= 1.5;
+			}
+			event.setOffset(currentTime + diff);
+			eventQueue.remove(event);
+			eventQueue.add(event);
+		}
+	}
+	
+	public void updateAlacrityEvents(boolean hasQuickness) {
+		
+	}
+	
+	public Event registerEvent(long offset, Target source, EventAffection affectedBy, Action action) {
+		Event event = new Event(offset, source, affectedBy, action);
+		if(affectedBy == EventAffection.Quickness) {
+			if(!quicknessEvents.containsKey(source)) {
+				quicknessEvents.put(source, new ArrayList<Event>());
+			}
+			quicknessEvents.get(source).add(event);
+			source.addQuicknessListener((active) -> updateQuicknessEvents(active, source)); 
+		}else if(affectedBy == EventAffection.Alacrity) {
+			if(!alacrityEvents.containsKey(source)) {
+				alacrityEvents.put(source, new ArrayList<Event>());
+			}
+			alacrityEvents.get(source).add(event);
+			source.addAlacrityListener((active) -> updateAlacrityEvents(active)); 
+		}
 		eventQueue.offer(event);
 		return event;
 	}
 	
 	public void removeEvent(Event event) {
 		eventQueue.remove(event);
-	}
-	
-	static class Event implements Comparable<Event>{
-		private long offset;
-		private Action action;
-		
-		public Event(long offset, Action action) {
-			this.offset = offset;
-			this.action = action;
-		}
-
-		@Override
-		public int compareTo(Event other) {
-			if(offset > other.offset) {
-				return 1;
-			}else if(offset < other.offset){
-				return -1;
-			}else {
-				return 0;
-			}
-		}
-	
 	}
 	
 }
