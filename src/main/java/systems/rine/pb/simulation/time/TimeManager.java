@@ -1,4 +1,4 @@
-package systems.rine.pb.simulation;
+package systems.rine.pb.simulation.time;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-import com.google.common.collect.Table;
-
-import systems.rine.pb.model.Target;
+import systems.rine.pb.simulation.Target;
 
 public class TimeManager {
 	private PriorityQueue<Event> eventQueue;
@@ -25,8 +23,8 @@ public class TimeManager {
 		stop = false;
 		while(!eventQueue.isEmpty() && !stop) {
 			Event current = eventQueue.poll();
-			currentTime = current.getOffset();
-			long result = current.getAction().run(currentTime);
+			currentTime = current.getWhen();
+			long result = current.getAction().run(current);
 			if(result > 0) {
 				current.addOffset(result);
 				eventQueue.offer(current);
@@ -40,13 +38,13 @@ public class TimeManager {
 	
 	public void updateQuicknessEvents(boolean hasQuickness, Target target) {
 		for(Event event : quicknessEvents.get(target)) {
-			long diff = event.getOffset() - currentTime;
+			long diff = event.getWhen() - currentTime;
 			if(hasQuickness) {
 				diff /= 1.5;
 			}else {
 				diff *= 1.5;
 			}
-			event.setOffset(currentTime + diff);
+			event.setOffset(diff);
 			eventQueue.remove(event);
 			eventQueue.add(event);
 		}
@@ -57,7 +55,7 @@ public class TimeManager {
 	}
 	
 	public Event registerEvent(long offset, Target source, EventAffection affectedBy, Action action) {
-		Event event = new Event(offset, source, affectedBy, action);
+		Event event = new Event(currentTime + offset, source, affectedBy, action, this);
 		if(affectedBy == EventAffection.Quickness) {
 			if(!quicknessEvents.containsKey(source)) {
 				quicknessEvents.put(source, new ArrayList<Event>());
@@ -77,6 +75,14 @@ public class TimeManager {
 	
 	public void removeEvent(Event event) {
 		eventQueue.remove(event);
+	}
+
+	public long getTime() {
+		return currentTime;
+	}
+
+	protected void addEvent(Event event) {
+		eventQueue.offer(event);
 	}
 	
 }

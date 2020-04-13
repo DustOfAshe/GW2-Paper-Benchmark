@@ -1,20 +1,22 @@
-package systems.rine.pb.simulation;
+package systems.rine.pb.simulation.time;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import systems.rine.pb.model.Target;
+import systems.rine.pb.simulation.StateListener;
+import systems.rine.pb.simulation.Target;
 
 public class Event implements Comparable<Event>{
-	private long offset;
+	private long when;
 	private Target source;
 	private Action action;
 	private List<StateListener> quicknessListeners = new ArrayList<StateListener>();
 	private List<StateListener> alacrityListeners = new ArrayList<StateListener>();
 	private EventAffection affectedBy;
+	private TimeManager timeManager;
 	
-	public Event(long offset, Target source, EventAffection affectedBy, Action action) {
-		this.offset = offset;
+	public Event(long when, Target source, EventAffection affectedBy, Action action, TimeManager timeManager) {
+		this.when = when;
 		this.source = source;
 		this.affectedBy = affectedBy;
 		this.action = action;
@@ -22,9 +24,9 @@ public class Event implements Comparable<Event>{
 
 	@Override
 	public int compareTo(Event other) {
-		if(offset > other.offset) {
+		if(when > other.when) {
 			return 1;
-		}else if(offset < other.offset){
+		}else if(when < other.when){
 			return -1;
 		}else {
 			return 0;
@@ -58,12 +60,14 @@ public class Event implements Comparable<Event>{
 		}	
 	}
 
-	public long getOffset() {
-		return offset;
+	public long getWhen() {
+		return when;
 	}
 	
 	public void setOffset(long offset) {
-		this.offset = offset;
+		this.when = timeManager.getTime() + offset;
+		timeManager.removeEvent(this);
+		timeManager.addEvent(this);
 	}
 	
 	public Target getSource() {
@@ -71,7 +75,7 @@ public class Event implements Comparable<Event>{
 	}
 
 	public void addOffset(long result) {
-		offset += result;
+		when += result;
 	}
 
 }

@@ -1,5 +1,7 @@
 package systems.rine.pb.simulation;
 
+import systems.rine.pb.simulation.time.TimeManager;
+
 public class Simulation {
 	private TimeManager timeManager;
 	
