@@ -1,5 +1,7 @@
 package systems.rine.pb.simulation.time;
 
+import systems.rine.pb.simulation.BoonListener;
+import systems.rine.pb.simulation.BoonType;
 import systems.rine.pb.simulation.Target;
 
 public class Event implements Comparable<Event>{
@@ -8,12 +10,43 @@ public class Event implements Comparable<Event>{
 	private Action action;
 	private EventAffection affectedBy;
 	private TimeManager timeManager;
+	private BoonListener boonListener;
 	
-	public Event(long when, Target source, EventAffection affectedBy, Action action, TimeManager timeManager) {
-		this.when = when;
+	protected Event(long _when, Target source, EventAffection affectedBy, Action action, TimeManager timeManager) {
+		this.when = _when;
 		this.source = source;
 		this.affectedBy = affectedBy;
 		this.action = action;
+		this.timeManager = timeManager;
+		if(affectedBy == EventAffection.Quickness) {
+			calcOffset();
+			boonListener = source.registerBoonListener(BoonType.Quickness, (stackCount, applied) ->{
+				long diff = when - timeManager.getTime();
+				if(stackCount == 1 && applied) {
+					when = timeManager.getTime() + (long) (diff / 1.5);
+				}else {
+					when = timeManager.getTime() + (long) (diff * 1.5);
+				}
+				timeManager.updateEvent(this);
+			});
+		}
+	}
+	
+	/**
+	 * only call this once after updating when
+	 */
+	private void calcOffset() {
+		if(source.hasBoon(BoonType.Quickness)) {
+			long diff = when - timeManager.getTime();
+			when =  timeManager.getTime() + (long) (diff / 1.5);
+			timeManager.updateEvent(this);
+		}		
+	}
+	
+	protected void dispose() {
+		if(boonListener != null) {
+			source.removeBoonListener(boonListener);
+		}
 	}
 
 	@Override
@@ -41,16 +74,11 @@ public class Event implements Comparable<Event>{
 	
 	public void setOffset(long offset) {
 		this.when = timeManager.getTime() + offset;
-		timeManager.removeEvent(this);
-		timeManager.addEvent(this);
+		calcOffset();
 	}
 	
 	public Target getSource() {
 		return source;
-	}
-
-	public void addOffset(long result) {
-		when += result;
 	}
 
 }

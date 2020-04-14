@@ -24,8 +24,10 @@ public class Boon {
 	protected Target owner;
 	protected List<BoonListener> listeners;
 	
-	public Boon(TimeManager timeManager, Target owner) {
+	public Boon(BoonType type, TimeManager timeManager, Target owner) {
+		this.type = type;
 		this.timeManager = timeManager;
+		stackCount = 0;
 		boonEndEvents = new PriorityQueue<>();
 		boonSource = new HashMap<>();
 		listeners = new CopyOnWriteArrayList<>();
@@ -57,8 +59,10 @@ public class Boon {
 			}
 		}else if(type.stacksIntensity()) {
 			type.getEffect().apply(source, owner);
+			stackCount++;
 			boonEndEvents.add(timeManager.registerEvent(duration, owner, EventAffection.None, (event) -> {
 				boonEndEvents.remove(event);
+				stackCount--;
 				type.getEffect().remove(source, owner);
 				notifyListeners(false);
 				return -1;
@@ -67,8 +71,10 @@ public class Boon {
 			if(boonEndEvents.isEmpty()) {
 				type.getEffect().apply(source, owner);
 			}
+			stackCount++;
 			Event temp = timeManager.registerEvent(duration, owner, EventAffection.None, (event) -> {
 				boonEndEvents.remove(event);
+				stackCount--;
 				type.getEffect().apply(source, owner);
 				boonSource.remove(event);
 				notifyListeners(false);
@@ -81,6 +87,10 @@ public class Boon {
 			boonEndEvents.add(temp);
 		}
 		notifyListeners(true);
+	}
+
+	public int getStacks() {
+		return stackCount;
 	}
 	
 	
