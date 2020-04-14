@@ -21,9 +21,10 @@ public class Target {
 		}
 	}
 	
-	public void registerBoonListener(BoonType type, BoonListener listener) {
+	public BoonListener registerBoonListener(BoonType type, BoonListener listener) {
 		boons.get(type).addListener(listener);
 		boonTypeOfListener.put(listener, type);
+		return listener;
 	}
 	
 	public void removeBoonListener(BoonListener listener) {

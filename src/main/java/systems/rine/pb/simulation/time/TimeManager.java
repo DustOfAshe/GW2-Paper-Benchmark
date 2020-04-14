@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+import systems.rine.pb.simulation.BoonListener;
+import systems.rine.pb.simulation.BoonType;
 import systems.rine.pb.simulation.Target;
 
 public class TimeManager {
 	private PriorityQueue<Event> eventQueue;
 	private Map<Target, List<Event>> quicknessEvents = new HashMap<>();
 	private Map<Target, List<Event>> alacrityEvents = new HashMap<>();
+	private Map<Event, BoonListener> boonListener = new HashMap<>();
 	private long currentTime;
 	private boolean stop;
 	
@@ -28,6 +31,8 @@ public class TimeManager {
 			if(result > 0) {
 				current.addOffset(result);
 				eventQueue.offer(current);
+			}else {
+				
 			}
 		}
 	}
@@ -50,7 +55,7 @@ public class TimeManager {
 		}
 	}
 	
-	public void updateAlacrityEvents(boolean hasQuickness) {
+	public void updateAlacrityEvents(boolean hasQuickness, Target target) {
 		
 	}
 	
@@ -61,13 +66,25 @@ public class TimeManager {
 				quicknessEvents.put(source, new ArrayList<Event>());
 			}
 			quicknessEvents.get(source).add(event);
-			source.addQuicknessListener((active) -> updateQuicknessEvents(active, source)); 
+			boonListener.put(event, source.registerBoonListener(BoonType.Quickness, (stackCount, active) -> {
+				if(stackCount == 1 && active) {
+					updateQuicknessEvents(true, source);
+				}else if(stackCount == 0) {
+					updateQuicknessEvents(false, source);
+				}
+			})); 
 		}else if(affectedBy == EventAffection.Alacrity) {
 			if(!alacrityEvents.containsKey(source)) {
 				alacrityEvents.put(source, new ArrayList<Event>());
 			}
 			alacrityEvents.get(source).add(event);
-			source.addAlacrityListener((active) -> updateAlacrityEvents(active)); 
+			boonListener.put(event, source.registerBoonListener(BoonType.Alacrity, (stackCount, active) -> {
+				if(stackCount == 1 && active) {
+					updateAlacrityEvents(active, source);
+				}else if(stackCount == 0) {
+					updateAlacrityEvents(false, source);
+				}	
+			})); 
 		}
 		eventQueue.offer(event);
 		return event;

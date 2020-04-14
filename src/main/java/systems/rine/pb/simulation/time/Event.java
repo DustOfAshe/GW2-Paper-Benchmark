@@ -1,17 +1,11 @@
 package systems.rine.pb.simulation.time;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import systems.rine.pb.simulation.StateListener;
 import systems.rine.pb.simulation.Target;
 
 public class Event implements Comparable<Event>{
 	private long when;
 	private Target source;
 	private Action action;
-	private List<StateListener> quicknessListeners = new ArrayList<StateListener>();
-	private List<StateListener> alacrityListeners = new ArrayList<StateListener>();
 	private EventAffection affectedBy;
 	private TimeManager timeManager;
 	
@@ -39,25 +33,6 @@ public class Event implements Comparable<Event>{
 	
 	public EventAffection getEventAffection() {
 		return affectedBy;
-	}
-	
-	public void addQuicknessListener(StateListener listener) {
-		quicknessListeners.add(listener);
-		source.addQuicknessListener(listener);
-	}
-	
-	public void addAlacrityListener(StateListener listener) {
-		alacrityListeners.add(listener);
-		source.addAlacrityListener(listener);
-	}
-	
-	public void removeListeners() {
-		for(StateListener listener: quicknessListeners) {
-			source.removeQuicknessListener(listener);
-		}
-		for(StateListener listener: alacrityListeners) {
-			source.removeAlacrityListener(listener);
-		}	
 	}
 
 	public long getWhen() {
