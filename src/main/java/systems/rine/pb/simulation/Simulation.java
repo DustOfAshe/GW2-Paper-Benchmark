@@ -17,7 +17,13 @@ public class Simulation {
 			attackCount++;
 			if(attackCount == 5) {
 				timeManager.registerEvent(500, fakeChrono, EventAffection.None, (event2) -> {
-					fakeChrono.applyBoon(BoonType.Quickness, 6000);
+					System.out.println("Gained Quickness");
+					fakeChrono.applyBoon(BoonType.Quickness, 1000);
+					fakeChrono.registerBoonListener(BoonType.Quickness, (stackCount, applied) -> {
+						if(stackCount == 0) {
+							System.out.println("Lost Quickness");
+						}	
+					});
 					return -1;
 				});	
 			}
