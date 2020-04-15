@@ -18,14 +18,24 @@ public class Event implements Comparable<Event>{
 		this.affectedBy = affectedBy;
 		this.action = action;
 		this.timeManager = timeManager;
+		calcOffset();
 		if(affectedBy == EventAffection.Quickness) {
-			calcOffset();
 			boonListener = source.registerBoonListener(BoonType.Quickness, (stackCount, applied) ->{
 				long diff = when - timeManager.getTime();
 				if(stackCount == 1 && applied) {
 					when = timeManager.getTime() + (long) (diff / 1.5);
-				}else {
+				}else if(stackCount == 0) {
 					when = timeManager.getTime() + (long) (diff * 1.5);
+				}
+				timeManager.updateEvent(this);
+			});
+		}else if(affectedBy == EventAffection.Alacrity) {
+			boonListener = source.registerBoonListener(BoonType.Alacrity, (stackCount, applied) ->{
+				long diff = when - timeManager.getTime();
+				if(stackCount == 1 && applied) {
+					when = timeManager.getTime() + (long) (diff / 1.25);
+				}else if(stackCount == 0) {
+					when = timeManager.getTime() + (long) (diff * 1.25);
 				}
 				timeManager.updateEvent(this);
 			});
@@ -36,9 +46,13 @@ public class Event implements Comparable<Event>{
 	 * only call this once after updating when
 	 */
 	private void calcOffset() {
-		if(source.hasBoon(BoonType.Quickness)) {
+		if(source.hasBoon(BoonType.Quickness) && affectedBy == EventAffection.Quickness) {
 			long diff = when - timeManager.getTime();
 			when =  timeManager.getTime() + (long) (diff / 1.5);
+			timeManager.updateEvent(this);
+		}else if(source.hasBoon(BoonType.Alacrity) && affectedBy == EventAffection.Alacrity) {
+			long diff = when - timeManager.getTime();
+			when =  timeManager.getTime() + (long) (diff / 1.25);
 			timeManager.updateEvent(this);
 		}		
 	}

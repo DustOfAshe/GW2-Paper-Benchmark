@@ -7,6 +7,7 @@ import java.util.Map;
 import systems.rine.pb.simulation.time.TimeManager;
 
 public class Target {
+	protected TimeManager timeManager;
 	protected int defense;
 	protected int hp;
 	protected Map<BoonType, Boon> boons;
@@ -45,6 +46,7 @@ public class Target {
 	}
 
 	public void applyBoon(BoonType type, int duration, Target source, int stacks) {
+		duration *= source.getBoonDuration(type);
 		Boon boon = boons.get(type);
 		for(int i = 0; i<stacks;i++){
 			boon.apply(duration, source);
@@ -54,6 +56,14 @@ public class Target {
 
 	public boolean hasBoon(BoonType quickness) {
 		return boons.get(quickness).getStacks() > 0;
+	}
+
+	public float getBoonDuration(BoonType type) {
+		return 0;
+	}
+
+	public TimeManager getTimeManager() {
+		return timeManager;
 	}
 	
 	

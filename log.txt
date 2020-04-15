@@ -3790,3 +3790,11 @@
 00:58:45 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37108 for Item: Attuned Marriner's Compass (Infused) This might be a bug in the API
 00:58:45 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 37093 for Item: Attuned Snaff's Gyre This might be a bug in the API
 00:58:45 [main] WARN  systems.rine.pb.model.Item - Couldn't find upgrade Item with Id: 79982 for Item: Attuned Mist Band (Infused) This might be a bug in the API
+12:49:21 [main] INFO  systems.rine.pb.simulation.Boon - Boon overcap detected
+13:26:20 [main] INFO  systems.rine.pb.simulation.Boon - Boon overcap detected
+13:33:44 [main] INFO  systems.rine.pb.simulation.Boon - Boon overcap detected
+08:56:26 [main] INFO  systems.rine.pb.simulation.Boon - Boon overcap detected
+08:56:26 [main] INFO  systems.rine.pb.simulation.Boon - Partial overcap detected
+08:58:50 [main] INFO  systems.rine.pb.simulation.Boon - Boon overcap detected
+08:58:50 [main] INFO  systems.rine.pb.simulation.Boon - Boon overcap detected
+08:58:50 [main] INFO  systems.rine.pb.simulation.Boon - Partial overcap detected
